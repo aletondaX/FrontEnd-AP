@@ -1,0 +1,16 @@
+div {
+    background-color: #3b6796;
+    color: linen;
+    /* align-items: center; */
+}
+
+.row {
+    margin: 0em;
+    padding: 1.2em 0.5em;
+    overflow-x: hidden;
+}
+
+img {
+    box-shadow: 3px 3px 20px black;
+    max-height: 110px;
+}

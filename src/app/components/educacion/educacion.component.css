@@ -1,0 +1,21 @@
+div {
+    background-color: #3b6796;
+    color: linen;
+    /* align-items: center; */
+}
+
+.row {
+    margin: 0em;
+    padding: 1.2em 0.5em;
+    overflow-x: hidden;
+}
+
+.row.lista {
+    margin: 0;
+    padding: 0.5em;
+    overflow-x: auto;
+}
+
+h2, h4 {
+    display: inline;
+}
