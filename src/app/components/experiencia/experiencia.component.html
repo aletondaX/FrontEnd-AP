@@ -1,18 +1,25 @@
 <div class="row">
     <h1>Experiencia Laboral</h1>
-    <!-- <ul type="square" *ngFor="let experiencia of experiencias"> -->
-    <ul type="square">
+    <div class="text-center">
+        <button type="button" class="btn btn-success" *ngIf="isLogged">
+            <a routerLink="addExperiencia" class="nav-link" style="color:aliceblue">
+            Agregar Experiencia<span class="sr-only"> (current) </span>
+            </a>
+        </button>
+        </div>
+    <ul type="square" *ngFor="let experiencia of experiencias">
+    <!-- <ul type="square"> -->
         <li>
             <div class="row lista">
                 <div class="col-1">
-                    <img src="" alt="Imágen Trabajo 1" class="img-fluid">
+                    <img src="{{experiencia.img}}" alt="Imágen Trabajo 1" class="img-fluid">
                 </div>
                 <div class="col-11">
-                    <h2>asd</h2> -
-                    <h4>asd ~ asd</h4>
-                    <a class="btn btn-primary tooltips"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-secondary tooltips"><i class="fa fa-times"></i></a>
-                    <p>asd</p>
+                    <h2>{{experiencia.nombreE}}</h2> -
+                    <h4>{{experiencia.fecha}} </h4>
+                    <a routerLink="editExperiencia/{{experiencia.id}}" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
+                    <a (click)="delete(experiencia.id)" class="btn btn-secondary tooltips" *ngIf="isLogged"><i class="fa fa-times"></i></a>
+                    <p>{{experiencia.descripcionE}}</p>
                 </div>
             </div>
         </li>

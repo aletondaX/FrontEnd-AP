@@ -6,7 +6,10 @@
         <div class="redes">
             <a href="https://www.linkedin.com/in/alejandro-tonda" target="_blank"><img src="../../../assets/linkedin.png" alt=""></a>
             <a href="https://github.com/aletondaX" target="_blank"><img src="../../../assets/github.png" alt=""></a>
-            <button type="button" class="btn btn-outline-light">Ingresar</button>
+            <!-- <button type="button" class="btn btn-outline-light">Ingresar</button> -->
+            <button class="btn btn-outline-light login" type="submit" (click)="iniciarsesion()" *ngIf="!isLogged">Ingresar</button>
+            <button class="btn btn-outline-light login" type="submit" (click)="onLogOut()" *ngIf="isLogged">Cerrar
+          sesión</button>
         </div>
     </div>
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Educacion } from 'src/app/models/educacion.model';
+import { EducacionService } from 'src/app/services/educacion.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-educacion',
@@ -6,25 +9,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
+  educaciones: Educacion[] = [];
 
-  // public educaciones:Educacion[]=[];
-  // public editEducacion:Educacion | undefined;
-  // public deleteEducacion:Educacion | undefined;
-
-  // constructor(private educacionService:EducacionService) { }
+  constructor(private educacionS: EducacionService, private tokenService: TokenService) { }
+  isLogged = false;
 
   ngOnInit(): void {
-    // this.getEducacion();
+    this.cargarEducacion();
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
 
-  // public getEducacion():void{
-  //   this.educacionService.getEducacion().subscribe({
-  //     next:(Response: Educacion[]) =>{
-  //       this.educaciones=Response;
-  //     },
-  //     error:(error:HttpErrorResponse) =>{
-  //       alert(error.message);
-  //     }
-  //   })
-  // }
+  cargarEducacion(): void{
+    this.educacionS.lista().subscribe(
+      data =>{
+        this.educaciones = data;  
+      }
+    )
+  }
+
+  delete(id?: number) {
+    if(id != undefined) {
+      this.educacionS.delete(id).subscribe(
+        data => {
+          this.cargarEducacion();
+        }, err => {
+          alert("No se pudo eliminar");
+        }
+      )
+    }
+  }
 }
