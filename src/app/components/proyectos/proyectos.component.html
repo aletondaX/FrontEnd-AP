@@ -1,15 +1,22 @@
 <div class="row">
     <h1>Proyectos</h1>
     <div class="row">
-        <div class="col-12">
-            <h2>Interface Custom para Lineage 2</h2>
+        <div class="text-center">
+            <button type="button" class="btn btn-success" *ngIf="isLogged">
+                <a routerLink="nuevoproyecto" class="nav-link" style="color:aliceblue">
+                Agregar Proyecto<span class="sr-only"> (current) </span>
+                </a>
+            </button>
+        </div>
+        <div class="col-12" *ngFor="let proyecto of proyectos">
+            <a routerLink="editproyecto/{{proyecto.id}}" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
+            <a (click)="delete(proyecto.id)" class="btn btn-secondary tooltips" *ngIf="isLogged"><i class="fa fa-times"></i></a>
+            <h2>{{proyecto.nombre}}</h2>
             <div class="row">
                 <div class="col-6">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, a suscipit! Dolorum ipsam amet
-                        libero perferendis laudantium corrupti nihil dolor eveniet fuga quos saepe, esse atque facilis
-                        temporibus perspiciatis quo!</p>
+                    <p>{{proyecto.descripcion}}</p>
                 </div>
-                <a href="https://youtu.be/Qje_kJZDsm0" target="_blank" class="col-4"><img class="img-fluid img-thumbnail" src="../../../assets/l2.png" alt="Imágen Proyecto"></a>
+                <a href="{{proyecto.link}}" target="_blank" class="col-4"><img class="img-fluid img-thumbnail" src="{{proyecto.img}}" alt="Imágen Proyecto"></a>
             </div>
         </div>
     </div>

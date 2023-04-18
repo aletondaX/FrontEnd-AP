@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LogoAPComponent implements OnInit {
   isLogged = false;
-  persona: Persona = new Persona("", "", "", "");
+  persona: Persona = new Persona("", "", "", "", "");
 
   constructor(public personaService: PersonaService,
     private router: Router,

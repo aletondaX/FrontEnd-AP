@@ -3,16 +3,16 @@
         <div>
             <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
                 <div class="form-group mt-5 mb-3">
-                    <label for="nombreE">Nombre de la Empresa</label>
-                    <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="nombreE" required>
+                    <label for="nombre">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="descripcionE">Descripción de la tarea</label>
-                    <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="descripcionE" required>
+                    <label for="descripcion">Descripción del proyecto</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="fecha">Período</label>
-                    <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha" required>
+                    <label for="link">Link</label>
+                    <input type="text" class="form-control" id="link" name="link" [(ngModel)]="link" required>
                 </div>
                 <div class="form-group">
                     <label for="img">Imagen</label>
@@ -20,11 +20,11 @@
                 </div>
                 <p><small class="text-muted">(Esperar a que cargue la vista previa de la imágen antes de guardar los cambios)</small></p>
                 <div class="imagen">
-                    <img [src]="imageExpService.urlImg" width="200px">
+                    <img [src]="imageProyService.urlImg" width="200px">
                 </div>
                 <br>
                 <button class="btn btn-primary">
-                    Agregar Experiencia
+                    Agregar proyecto
                 </button>
             </form>
         </div>

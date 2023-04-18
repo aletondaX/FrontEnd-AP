@@ -5,8 +5,9 @@
             [imageSrc]="'assets/java.png'"
             [imageWidth]="92"
             [imageHeight]="92"
-            [percent]="50"
+            [percent]="(skills[0].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/1" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5>Java</h5>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 text-center prog">
@@ -14,8 +15,9 @@
             [imageSrc]="'assets/uscript.png'"
             [imageWidth]="75"
             [imageHeight]="75"
-            [percent]="40"
+            [percent]="(skills[1].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/2" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5><a href="https://es.wikipedia.org/wiki/UnrealScript" target="_blank">UnrealScript</a></h5>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 text-center prog">
@@ -23,8 +25,9 @@
             [imageSrc]="'assets/html5.png'"
             [imageWidth]="85"
             [imageHeight]="85"
-            [percent]="50"
+            [percent]="(skills[2].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/3" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5>HTML</h5>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 text-center prog">
@@ -32,8 +35,9 @@
             [imageSrc]="'assets/css3.png'"
             [imageWidth]="60"
             [imageHeight]="85"
-            [percent]="30"
+            [percent]="(skills[3].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/4" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5>CSS</h5>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 text-center prog">
@@ -41,8 +45,9 @@
             [imageSrc]="'assets/js.png'"
             [imageWidth]="65"
             [imageHeight]="90"
-            [percent]="40"
+            [percent]="(skills[4].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/5" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5>JavaScript</h5>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 text-center prog">
@@ -50,8 +55,9 @@
             [imageSrc]="'assets/ts.png'"
             [imageWidth]="66"
             [imageHeight]="66"
-            [percent]="10"
+            [percent]="(skills[5].porcentaje)"
         ></circle-progress>
+        <a routerLink="editskill/6" class="btn btn-primary tooltips" *ngIf="isLogged"><i class="fa fa-pencil"></i></a>
         <h5>TypeScript</h5>
     </div>
 </div>

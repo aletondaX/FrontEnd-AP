@@ -23,6 +23,12 @@ import { AddExperienciaComponent } from './components/experiencia/add-experienci
 import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
 import { AddEducacionComponent } from './components/educacion/add-educacion.component';
 import { EditEducacionComponent } from './components/educacion/edit-educacion.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { NewProyectosComponent } from './components/proyectos/new-proyectos.component';
+import { EditProyectosComponent } from './components/proyectos/edit-proyectos.component';
+import { EditSkillComponent } from './components/skills/edit-skill.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,10 @@ import { EditEducacionComponent } from './components/educacion/edit-educacion.co
     AddExperienciaComponent,
     EditExperienciaComponent,
     AddEducacionComponent,
-    EditEducacionComponent
+    EditEducacionComponent,
+    NewProyectosComponent,
+    EditProyectosComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,9 @@ import { EditEducacionComponent } from './components/educacion/edit-educacion.co
     }),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]

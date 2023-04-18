@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Educacion } from 'src/app/models/educacion.model';
 import { EducacionService } from 'src/app/services/educacion.service';
-// import { ImageEduService } from 'src/app/service/image-edu.service';
+import { ImageEduService } from 'src/app/services/image-edu.service';
 
 
 @Component({
@@ -13,8 +13,8 @@ import { EducacionService } from 'src/app/services/educacion.service';
 export class EditEducacionComponent implements OnInit {
   educacion: Educacion = new Educacion("", "", "", "");
 
-  // constructor(private educacionS:EducacionService, private activatedRouter:ActivatedRoute, private router:Router, public imageEduService:ImageEduService) { }
-  constructor(private educacionS:EducacionService, private activatedRouter:ActivatedRoute, private router:Router) { }
+  constructor(private educacionS:EducacionService, private activatedRouter:ActivatedRoute, private router:Router, public imageEduService:ImageEduService) { }
+  // constructor(private educacionS:EducacionService, private activatedRouter:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.params['id'];
@@ -30,7 +30,9 @@ export class EditEducacionComponent implements OnInit {
 
   onUpdate(): void{
     const id = this.activatedRouter.snapshot.params['id'];
-    // this.educacion.img = this.imageEduService.urlImg
+    if (this.imageEduService.urlImg) {
+      this.educacion.img = this.imageEduService.urlImg
+    }
     this.educacionS.update(id, this.educacion).subscribe(
       data => {
         alert("Educación actualizada correctamente");
@@ -40,12 +42,12 @@ export class EditEducacionComponent implements OnInit {
         this.router.navigate(['']);
       }
     )
-    // this.imageEduService.clearUrl();
+    this.imageEduService.clearUrl();
   }
 
-  // uploadImage($event:any) {
-  //   const id = this.activatedRouter.snapshot.params['id'];
-  //   const name = "educacion_" + id;
-  //   this.imageEduService.uploadImage($event, name)
-  // }
+  uploadImage($event:any) {
+    const id = this.activatedRouter.snapshot.params['id'];
+    const name = "educacion_" + id;
+    this.imageEduService.uploadImage($event, name)
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Persona } from 'src/app/models/persona.model';
 import { PersonaService } from 'src/app/services/persona.service';
-// import { ImageService } from 'src/app/services/image.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-edit-acerca-de',
@@ -10,10 +10,10 @@ import { PersonaService } from 'src/app/services/persona.service';
   styleUrls: ['./edit-acerca-de.component.css']
 })
 export class EditAcercaDeComponent implements OnInit {
-  persona: Persona = new Persona("", "", "", "");
+  persona: Persona = new Persona("", "", "", "", "");
 
-  constructor(private activatedRouter: ActivatedRoute, private personaService: PersonaService, private router: Router) { }
-  // constructor(private activatedRouter: ActivatedRoute, private personaService: PersonaService, private router: Router, public imageService: ImageService) { }
+  // constructor(private activatedRouter: ActivatedRoute, private personaService: PersonaService, private router: Router) { }
+  constructor(private activatedRouter: ActivatedRoute, private personaService: PersonaService, private router: Router, public imageService: ImageService) { }
 
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.params['id'];
@@ -29,7 +29,9 @@ export class EditAcercaDeComponent implements OnInit {
 
   onUpdate(): void{
     const id = this.activatedRouter.snapshot.params['id'];
-    // this.persona.img = this.imageService.url
+    if (this.imageService.url) {
+      this.persona.img = this.imageService.url
+    }
     this.personaService.update(id, this.persona).subscribe(
       data => {
         alert("Información actualizada correctamente");
@@ -39,12 +41,12 @@ export class EditAcercaDeComponent implements OnInit {
         this.router.navigate(['']);
       }
     )
-    // this.imageService.clearUrl();
+    this.imageService.clearUrl();
   }
 
-  // uploadImage($event:any){
-  //   const id = this.activatedRouter.snapshot.params['id'];
-  //   const name = "perfil_" + id;
-  //   this.imageService.uploadImage($event, name)
-  // }
+  uploadImage($event:any){
+    const id = this.activatedRouter.snapshot.params['id'];
+    const name = "perfil_" + id;
+    this.imageService.uploadImage($event, name)
+  }
 }

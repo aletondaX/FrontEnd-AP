@@ -12,7 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
 
 export class AcercaDeComponent implements OnInit {
   isLogged = false;
-  persona: Persona = new Persona("", "", "", "");
+  persona: Persona = new Persona("", "", "", "", "");
 
   constructor(public personaService: PersonaService, private router: Router, private tokenService: TokenService) { }
 
